@@ -26,20 +26,17 @@ var bandTools = function(shows)
       return '';
     }
     
-    var bandLink = (info.link)? '<a href="' + info.link + '">' + testDate + '</a>' : testDate;
-    var showPrice = (info.price)? '</td><td>' + info.price + '</td></tr>' : '</td></tr>';
+    var bandLink = (info.link)? '<a href="' + info.link + '">' + testDate + '</a>' : '<span>' + testDate + '</span>';
     
-    return '<tr><td>' + (bandLink) + '</td><td>with ' + info.bands + '</td><td>at ' + info.location + (showPrice);
+    return '<tr><td>' + (bandLink) + '</td><td>with ' + info.bands + '</td><td>at ' + info.location;
   };
   
   var layout = function(shows)
   {
-    var showsEle = document.getElementById('shows');
-    
+    var showsEle = document.getElementById('shows');    
     let tableRows = [];
     
-    shows.forEach((show) => tableRows.push(tableData(show)));
-    
+    shows.forEach((show) => tableRows.push(tableData(show)));    
     tableRows.forEach((row) => showsEle.innerHTML += row);
   };
   
