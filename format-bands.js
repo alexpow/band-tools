@@ -39,9 +39,10 @@ var bandTools = function(shows)
     var showsEle = document.getElementById('shows');
     let tableRows = [];
 
+    shows.forEach((show) => tableRows.push(tableData(show)));
+
     if (hasShows)
     {
-      shows.forEach((show) => tableRows.push(tableData(show)));    
       tableRows.forEach((row) => showsEle.innerHTML += row);
     }
     else
