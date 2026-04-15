@@ -1,5 +1,7 @@
 var bandTools = function(shows)
 {
+  let hasShows = false;
+  
   var dateFormat = function(date)
   {
     let year = date.split("/")[2];
@@ -25,7 +27,8 @@ var bandTools = function(shows)
     {
       return '';
     }
-    
+
+    hasShows = true;
     var bandLink = (info.link)? '<a href="' + info.link + '">' + testDate + '</a>' : '<span>' + testDate + '</span>';
     
     return '<tr><td>' + (bandLink) + '</td><td>with ' + info.bands + '</td><td>at ' + info.location;
@@ -33,11 +36,18 @@ var bandTools = function(shows)
   
   var layout = function(shows)
   {
-    var showsEle = document.getElementById('shows');    
+    var showsEle = document.getElementById('shows');
     let tableRows = [];
-    
-    shows.forEach((show) => tableRows.push(tableData(show)));    
-    tableRows.forEach((row) => showsEle.innerHTML += row);
+
+    if (hasShows)
+    {
+      shows.forEach((show) => tableRows.push(tableData(show)));    
+      tableRows.forEach((row) => showsEle.innerHTML += row);
+    }
+    else
+    {
+      showsEle.innerHTML = 'No shows coming up.';
+    }
   };
   
   layout(shows);
