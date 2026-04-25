@@ -11,7 +11,7 @@ var bandTools = function(shows)
     let jsDate = new Date(year, month, day);
   
     let diff = new Date().getTime() - jsDate.getTime();
-    if (diff < 0) {
+    if (diff <= 0) {
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       return months[month] + ' ' + day + ((new Date().getFullYear() == year)? '' : ', ' + year);
     }
